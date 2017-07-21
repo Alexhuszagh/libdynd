@@ -3,6 +3,7 @@
 # BSD 2-Clause License, see LICENSE.txt
 #
 
+set(CMAKE_LEGACY_CYGWIN_WIN32 1)
 cmake_minimum_required(VERSION 2.8.11)
 project(libdynd)
 
