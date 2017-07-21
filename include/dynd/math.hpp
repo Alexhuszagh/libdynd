@@ -6,6 +6,7 @@
 #pragma once
 
 #include <dynd/callable.hpp>
+#include <limits>
 
 namespace dynd {
 
@@ -121,7 +122,7 @@ inline float _nan(const char *arg) {
 #ifdef __CUDACC__
   return ::nanf(arg);
 #else
-  return std::nanf(arg);
+  return arg ? std::nanf(arg) : std::numeric_limits<float>::quiet_NaN();
 #endif
 }
 
@@ -195,7 +196,7 @@ inline double _nan(const char *arg) {
 #ifdef __CUDACC__
   return ::nan(arg);
 #else
-  return std::nan(arg);
+  return arg ? std::nan(arg) : std::numeric_limits<double>::quiet_NaN();
 #endif
 }
 
