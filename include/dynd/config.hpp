@@ -985,8 +985,9 @@ using std::exp;
 using std::log;
 using std::pow;
 using std::sqrt;
-using std::cbrt;
-using std::hypot;
+// Android compilers, and MinGW don't always export them to std::
+using ::cbrt;
+using ::hypot;
 using std::abs;
 using std::isfinite;
 using std::isinf;
