@@ -150,7 +150,7 @@ DYNDT_API void dynd::register_known_type_id_constructor(type_id_t id, ndt::type 
                                                         type_constructor_fn_t construct_type,
                                                         low_level_type_args_parse_fn_t parse_type_args) {
   vector<id_info> &infos = detail::infos();
-  if (id < 0 || id >= infos.size()) {
+  if (id < 0 || id >= static_cast<type_id_t>(infos.size())) {
     throw out_of_range("Type ID " + to_string(id) + " is out of range, cannot register its known type ID constructor");
   }
   id_info &ii = infos[id];
