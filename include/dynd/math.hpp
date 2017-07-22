@@ -119,11 +119,7 @@ inline float _1_by_sqrt_2<float>() {
 
 template <>
 inline float _nan(const char *arg) {
-#ifdef __CUDACC__
   return ::nanf(arg);
-#else
-  return std::nanf(arg);
-#endif
 }
 
 template <>
@@ -193,11 +189,7 @@ inline double _1_by_sqrt_2<double>() {
 
 template <>
 inline double _nan(const char *arg) {
-#ifdef __CUDACC__
   return ::nan(arg);
-#else
-  return std::nan(arg);
-#endif
 }
 
 template <typename T>
