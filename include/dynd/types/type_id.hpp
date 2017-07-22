@@ -176,7 +176,7 @@ DYNDT_API std::ostream &operator<<(std::ostream &o, type_id_t tid);
 
 // Forward declaration so we can make the is_builtin_type function here
 namespace ndt {
-  class base_type;
+  class DYND_API base_type;
 } // namespace dynd::nd
 
 inline bool is_builtin_type(const ndt::base_type *dt) {
