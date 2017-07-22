@@ -9,7 +9,6 @@
 #else // defined(_MSC_VER)
 #pragma GCC diagnostic ignored "-Wattributes"
 #endif //defined(_MSC_VER)
-#if @DYND_SHARED_LIB_VAL@
 #if defined(DYNDT_EXPORT)
 // Building the library
 #define DYNDT_API __declspec(dllexport)
@@ -17,13 +16,14 @@
 // Importing the library
 // libdynd and libdyndt must either both be built as shared or static libs.
 // Use a single configuration parameter to represent that.
+#if @DYND_SHARED_LIB_VAL@
 #define DYNDT_API __declspec(dllimport)
 #define DYNDT_USING_DLL
-#endif // defined(DYNDT_EXPORT)
 #else // @DYND_SHARED_LIB_VAL@
 #define DYNDT_API
 #define DYNDT_USING_STATIC_LIB
 #endif // @DYND_SHARED_LIB_VAL@
+#endif // defined(DYNDT_EXPORT)
 #define DYNDT_INTERNAL
 #else // defined(_WIN32) || defined(__CYGWIN__)
 #define DYNDT_API
@@ -37,7 +37,6 @@
 #else // defined(_MSC_VER)
 #pragma GCC diagnostic ignored "-Wattributes"
 #endif //defined(_MSC_VER)
-#if @DYND_SHARED_LIB_VAL@
 #if defined(DYND_EXPORT)
 // Building the library
 #define DYND_API __declspec(dllexport)
@@ -45,13 +44,14 @@
 // Importing the library
 // libdynd and libdyndt must either both be built as shared or static libs.
 // Use a single configuration parameter to represent that.
+#if @DYND_SHARED_LIB_VAL@
 #define DYND_API __declspec(dllimport)
 #define DYND_USING_DLL
-#endif // defined(DYND_EXPORT)
 #else // @DYND_SHARED_LIB_VAL@
 #define DYND_API
 #define DYND_USING_STATIC_LIB
 #endif // @DYND_SHARED_LIB_VAL@
+#endif // defined(DYND_EXPORT)
 #define DYND_INTERNAL
 #else // defined(_WIN32) || defined(__CYGWIN__)
 #define DYND_API
