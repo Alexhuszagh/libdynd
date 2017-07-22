@@ -19,11 +19,11 @@
 // Use a single configuration parameter to represent that.
 #define DYNDT_API __declspec(dllimport)
 #define DYNDT_USING_DLL
-#endif // @DYND_SHARED_LIB_VAL@
+#endif // defined(DYNDT_EXPORT)
 #else // @DYND_SHARED_LIB_VAL@
 #define DYNDT_API
 #define DYNDT_USING_STATIC_LIB
-#endif // defined(DYNDT_EXPORT)
+#endif // @DYND_SHARED_LIB_VAL@
 #define DYNDT_INTERNAL
 #else // defined(_WIN32) || defined(__CYGWIN__)
 #define DYNDT_API
