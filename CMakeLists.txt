@@ -102,11 +102,11 @@ if("${MSVC}" OR "${DYND_SIMULATED_COMPILER}" STREQUAL "MSVC")
     if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
         # If this is the clang-cl compiler.
         # Don't enable -WX here yet.
-        set(CMAKE_CXX_FLAGS "-W1 -EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
+        set(CMAKE_CXX_FLAGS "-EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
     elseif(${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS 19)
         message(FATAL_ERROR "Only MSVC 2015 (Version 19.0) and later are supported by LibDyND. Found version ${CMAKE_CXX_COMPILER_VERSION}.")
     else()
-        set(CMAKE_CXX_FLAGS "-W1 -WX -EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
+        set(CMAKE_CXX_FLAGS "-WX -EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
     endif()
 else()
     if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
