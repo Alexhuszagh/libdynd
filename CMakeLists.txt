@@ -25,7 +25,7 @@ if(NOT (SIZEOF_DOUBLE EQUAL 8))
 endif()
 
 # Only add these options if this is the top level CMakeLists.txt
-if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
+if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 ################################################
 # Some options configurable from the CMAKE command execution
 #
@@ -96,10 +96,10 @@ else()
     set(DYND_SIMULATED_COMPILER ${CMAKE_CXX_COMPILER_ID})
 endif()
 
-if("${MSVC}" OR "${DYND_SIMULATED_COMPILER}" STREQUAL "MSVC")
+if(${MSVC} OR ${DYND_SIMULATED_COMPILER} STREQUAL "MSVC")
     # -WX: Treat warnings as errors
     # -bigobj: Allow lots of symbols (assignment_kernels.cpp and assignment_kernels.cu need this flag)
-    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
         # If this is the clang-cl compiler.
         # Don't enable -WX here yet.
         set(CMAKE_CXX_FLAGS "-EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
@@ -109,12 +109,12 @@ if("${MSVC}" OR "${DYND_SIMULATED_COMPILER}" STREQUAL "MSVC")
         set(CMAKE_CXX_FLAGS "-WX -EHsc -bigobj -wd4503 ${CMAKE_CXX_FLAGS}")
     endif()
 else()
-    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-        if ("${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS 4.9)
+    if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+        if (${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS 4.9)
             message(FATAL_ERROR "Only GCC 4.9 and later are supported by LibDyND. Found version ${CMAKE_CXX_COMPILER_VERSION}.")
         endif()
         set(CMAKE_CXX_FLAGS "-std=c++14 -fmax-errors=20 -Wno-type-limits -Wno-maybe-uninitialized ${CMAKE_CXX_FLAGS}")
-    elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
         set(CMAKE_CXX_FLAGS "-std=c++14 -ferror-limit=20 -Wno-missing-braces -ftemplate-depth=500 ${CMAKE_CXX_FLAGS}")
     endif()
 
@@ -125,7 +125,7 @@ else()
     endif()
 endif()
 
-if("${UNIX}" AND NOT CMAKE_SYSTEM_NAME MATCHES "BSD")
+if(${UNIX} AND NOT CMAKE_SYSTEM_NAME MATCHES "BSD")
     set(DYNDT_LINK_LIBS ${DYNDT_LINK_LIBS} dl)
 endif()
 
@@ -574,7 +574,7 @@ get_property(dynd_library_prefix TARGET libdynd PROPERTY PREFIX)
 get_property(dynd_output_name TARGET libdynd PROPERTY OUTPUT_NAME)
 get_property(dyndt_output_name TARGET libdyndt PROPERTY OUTPUT_NAME)
 if (DYND_SHARED_LIB)
-    if ("${CMAKE_IMPORT_LIBRARY_SUFFIX}" STREQUAL "")
+    if (${CMAKE_IMPORT_LIBRARY_SUFFIX} STREQUAL "")
         set(DYND_LIB_FILE "${dynd_library_prefix}${dynd_output_name}${CMAKE_SHARED_LIBRARY_SUFFIX}")
         set(DYNDT_LIB_FILE "${dynd_library_prefix}${dyndt_output_name}${CMAKE_SHARED_LIBRARY_SUFFIX}")
     else()
