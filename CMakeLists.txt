@@ -96,7 +96,7 @@ else()
     set(DYND_SIMULATED_COMPILER ${CMAKE_CXX_COMPILER_ID})
 endif()
 
-if(${MSVC} OR ${DYND_SIMULATED_COMPILER} STREQUAL "MSVC")
+if(${MSVC} OR (${DYND_SIMULATED_COMPILER} STREQUAL "MSVC"))
     # -WX: Treat warnings as errors
     # -bigobj: Allow lots of symbols (assignment_kernels.cpp and assignment_kernels.cu need this flag)
     if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
