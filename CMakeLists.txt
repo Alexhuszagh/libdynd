@@ -3,7 +3,6 @@
 # BSD 2-Clause License, see LICENSE.txt
 #
 
-set(CMAKE_LEGACY_CYGWIN_WIN32 1)
 cmake_minimum_required(VERSION 2.8.11)
 project(libdynd)
 cmake_policy(SET CMP0054 NEW)
@@ -119,7 +118,7 @@ else()
         set(CMAKE_CXX_FLAGS "-std=c++14 -ferror-limit=20 -Wno-missing-braces -ftemplate-depth=500 ${CMAKE_CXX_FLAGS}")
     endif()
 
-    if(WIN32)
+    if(MINGW OR MSYS OR CYGWIN)
         set(CMAKE_CXX_FLAGS "-O3 -std=c++14 -fomit-frame-pointer -fstrict-aliasing -Wall -Wextra -Werror -Wno-missing-field-initializers ${CMAKE_CXX_FLAGS}")
     else()
         set(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -fstrict-aliasing -Wall -Wextra -Wno-missing-field-initializers -fPIC -Werror -Wno-ignored-attributes ${CMAKE_CXX_FLAGS}")
