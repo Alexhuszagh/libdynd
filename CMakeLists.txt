@@ -125,7 +125,7 @@ else()
     endif()
 endif()
 
-if(${UNIX} AND NOT CMAKE_SYSTEM_NAME MATCHES "BSD")
+if(${UNIX} AND NOT (CMAKE_SYSTEM_NAME MATCHES "BSD"))
     set(DYNDT_LINK_LIBS ${DYNDT_LINK_LIBS} dl)
 endif()
 
