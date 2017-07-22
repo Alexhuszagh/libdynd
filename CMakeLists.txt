@@ -4,9 +4,9 @@
 #
 
 set(CMAKE_LEGACY_CYGWIN_WIN32 1)
-cmake_policy(SET CMP0054 NEW)
 cmake_minimum_required(VERSION 2.8.11)
 project(libdynd)
+cmake_policy(SET CMP0054 NEW)
 
 include(CheckTypeSize)
 

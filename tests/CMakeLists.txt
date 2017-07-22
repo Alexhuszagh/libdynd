@@ -4,8 +4,8 @@
 #
 
 cmake_minimum_required(VERSION 2.6)
-cmake_policy(SET CMP0054 NEW)
 project(test_libdynd)
+cmake_policy(SET CMP0054 NEW)
 
 # Disable optimizations so the tests build quicker
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
