@@ -1221,12 +1221,12 @@ namespace ndt {
 
 namespace nd {
 
-  class DYNDT_API memory_block;
+  class memory_block;
 
-  class DYNDT_API buffer;
-  class DYNDT_API array;
+  class buffer;
+  class array;
 
-  class DYNDT_API callable;
+  class callable;
 
 } // namespace dynd ::nd
 } // namespace dynd
