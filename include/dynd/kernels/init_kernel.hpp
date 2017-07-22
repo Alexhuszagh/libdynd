@@ -263,8 +263,11 @@ namespace nd {
     void init(const ndt::type &tp, const char *metadata) {
       typedef detail::init_kernel<ResType, ContainerType> kernel;
 
+#ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#endif
+
       new (&child) kernel(tp, metadata);
       destruct_wrapper = [](container_init *self) { reinterpret_cast<kernel *>(&self->child)->~kernel(); };
       single_wrapper = [](container_init *self, char *data, const ContainerType &values) {
@@ -273,7 +276,10 @@ namespace nd {
       contiguous_wrapper = [](container_init *self, char *data, const ContainerType *values, size_t size) {
         reinterpret_cast<kernel *>(&self->child)->contiguous(data, values, size);
       };
+
+#ifdef __GNUC__
 #pragma GCC diagnostic pop
+#endif
     }
 
     container_init(const ndt::type &tp, const char *metadata) {
