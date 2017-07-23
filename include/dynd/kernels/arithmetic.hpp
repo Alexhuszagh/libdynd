@@ -154,7 +154,7 @@ namespace detail {
 
   template <typename Arg0Type>
   struct inline_cbrt {
-    static auto f(Arg0Type a) { return std::cbrt(a); }
+    static auto f(Arg0Type a) { return ::cbrt(a); }
   };
 
   // Arithmetic operators that need zero checking.
